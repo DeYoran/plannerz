@@ -25,7 +25,7 @@ Class Model{
             $this->fault('unchangable', ['value'=> 'id']);
             return $this;
         }
-        elseif(Validator::isUuid($id){
+        elseif(Validator::isUuid($id)){
             $this->id = $id;
             return $this;
         }

@@ -11,7 +11,7 @@ class User extends Model{
      * @Id
      * @GeneratedValue(strategy="UUID")
      */
-    private $id;
+    protected $id;
     /** @Column(type="string") **/
     private $displayname;
 
