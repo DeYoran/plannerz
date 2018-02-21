@@ -2,6 +2,8 @@
 
 Class Model{
 
+    protected $validator;
+
     protected function fault($type, $params){
         switch ($type) {
             case 'type':
@@ -18,11 +20,16 @@ Class Model{
         }
     }
 
-    protected function isuuid($presumedUuid){
-        $regex = '/^\{?[A-Z0-9]{8}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{4}-[A-Z0-9]{12}\}?$/';
-        $compare = strtoupper($presumedUuid);
-        return preg_match($regex, $compare);
-        // regex copied from https://stackoverflow.com/questions/1253373/php-check-for-valid-guid
+    protected function setUuid($id){
+        if(isset($this->id)){
+            $this->fault('unchangable', ['value'=> 'id']);
+            return $this;
+        }
+        elseif(Validator::isUuid($id){
+            $this->id = $id;
+            return $this;
+        }
+        $this->fault('type', ['type'=> 'uuid (string)']);
     }
 
 }

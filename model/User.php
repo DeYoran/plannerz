@@ -1,9 +1,7 @@
 <?php
 
-use \Doctrine\Common\Collections\ArrayCollection;
-
 /**
- * @Entity @Table(name="model_gebruiker")
+ * @Entity @Table(name="user")
  **/
 class User extends Model{
     //variabelen
@@ -37,15 +35,7 @@ class User extends Model{
     }
 
     public function setId($id){
-        if(isset($this->id)){
-            $this->fault('unchangable', ['value'=> 'id']);
-            return $this;
-        }
-        elseif(is_string($id) && $this->isuuid($id)){
-            $this->id = $id;
-            return $this;
-        }
-        $this->fault('type', ['type'=> 'uuid (string)']);
+        return $this->setUuid($id);
     }
 
     public function getDisplayName(){
