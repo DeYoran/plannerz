@@ -1,0 +1,9 @@
+{
+    "require": {
+        "bshaffer/oauth2-server-php": "^1.10",
+        "doctrine/orm": "2.4.*"
+    },
+    "autoload": {
+        "psr-4": {"": "model/"}
+    }
+}
