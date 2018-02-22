@@ -1,2 +1,6 @@
 includes/config.php
 test.php
+
+#temp
+layouts/*
+controller/*

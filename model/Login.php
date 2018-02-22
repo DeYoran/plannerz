@@ -6,11 +6,7 @@
 class Login extends Model{
     //variabelen
 
-    /**
-     * @Column(type="guid")
-     * @Id
-     * @GeneratedValue(strategy="UUID")
-     */
+    /** @Column(type="guid")  @Id  */
     protected $id;
     /** @Column(type="string") **/
     private $emailadress;
@@ -49,6 +45,5 @@ class Login extends Model{
         $this->password = password_hash($password, PASSWORD_BCRYPT);
         return $this;
     }
-
 
 }

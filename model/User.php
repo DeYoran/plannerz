@@ -6,11 +6,7 @@
 class User extends Model{
     //variabelen
 
-    /**
-     * @Column(type="guid")
-     * @Id
-     * @GeneratedValue(strategy="UUID")
-     */
+    /** @Column(type="guid")  @Id  */
     protected $id;
     /** @Column(type="string") **/
     private $displayname;
