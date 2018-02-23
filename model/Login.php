@@ -22,7 +22,7 @@ class Login extends Model{
     }
 
     public function setId($id){
-        return $this->setUuid($id);
+        return parent::setId($id, 'UUID');
     }
 
     public function getEmailadress(){

@@ -31,7 +31,7 @@ class User extends Model{
     }
 
     public function setId($id){
-        return $this->setUuid($id);
+        return parent::setId($id, 'UUID');
     }
 
     public function getDisplayName(){
