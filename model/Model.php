@@ -1,7 +1,7 @@
 <?php
 
 Class Model{
-    
+
     protected function fault($type, $params){
         switch ($type) {
             case 'type':
@@ -18,12 +18,12 @@ Class Model{
         }
     }
 
-    protected function setUuid($id, $type){
+    protected function setId($id, $type){
         if(isset($this->id)){
             $this->fault('unchangable', ['value'=> 'id']);
             return $this;
         }
-        if($type == 'UUID'){}
+        if($type == 'UUID'){
             if(Validator::isUuid($id)){
                 $this->id = $id;
                 return $this;

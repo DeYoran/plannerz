@@ -1,37 +1,37 @@
 <?php
 
 /**
- * @Entity @Table(name="login")
+ * @Entity @Table(name="logins")
  **/
 class Login extends Model{
     //variabelen
 
-    /** @Column(type="guid")  @Id  */
+    /** @Column(type="guid")  @Id  @GeneratedValue(strategy="UUID")*/
     protected $id;
     /** @Column(type="string") **/
-    private $emailadress;
+    private $email;
     /** @Column(type="string") **/
     private $password;
 
-     /** @OneToMany(targetEntity="UserLogins", mappedBy="user") */
+     /** @OneToMany(targetEntity="UserLogin", mappedBy="user") */
     private $uLogins;
 
     //getters & setters
     public function getId(){
-        return $this->id();
+        return $this->id;
     }
 
-    public function setId($id){
-        return parent::setId($id, 'UUID');
+    public function setId($id, $type = "UUID"){
+        return parent::setId($id, $type);
     }
 
     public function getEmailadress(){
-        return $this->Emailadress;
+        return $this->Email;
     }
 
     public function setEmailadress($emailadress){
         if(Validator::isEmail($emailadress)){
-            $this->emailadress = $emailadress;
+            $this->email = $emailadress;
             return $this;
         }
         $this->fault('type', ['type'=> 'emailadress (string)']);

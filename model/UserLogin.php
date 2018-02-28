@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @Entity @Table(name="login")
+ * @Entity @Table(name="userlogins")
  **/
 class UserLogin extends Model{
     //variabelen
@@ -11,8 +11,13 @@ class UserLogin extends Model{
     /** @Column(type="guid")  @Id  */
     private $loginid;
 
-    /** @Column(type="int") */
-    private $rights;
+    /** @Column(type="integer") */
+    private $rights = 0;
+
+    public function __construct($user, $login){
+        $this->userid = $user->getId();
+        $this->loginid = $login->getId();
+    }
 
     public function getRights(){
         return $this->rights;

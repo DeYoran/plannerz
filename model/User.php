@@ -1,37 +1,37 @@
 <?php
 
 /**
- * @Entity @Table(name="user")
+ * @Entity @Table(name="users")
  **/
 class User extends Model{
     //variabelen
 
-    /** @Column(type="guid")  @Id  */
+    /** @Column(type="guid")  @Id  @GeneratedValue(strategy="UUID")*/
     protected $id;
     /** @Column(type="string") **/
-    private $displayname;
+    private $displayName;
 
-     /** @OneToMany(targetEntity="UserLogins", mappedBy="user") */
+     /** @OneToMany(targetEntity="UserLogin", mappedBy="user") */
     private $uLogins;
 
     #todo should this be OneToMany or manyToMany?
-     /** @OneToMany(targetEntity="Contacts", mappedBy="user") */
+     /* @OneToMany(targetEntity="Contacts", mappedBy="user") */
     private $contacts;
 
-     /** @OneToMany(targetEntity="Events", mappedBy="organizer") */
+     /* @OneToMany(targetEntity="Event", mappedBy="organizer") */
     private $organizedEvents;
 
-    /** @OneToMany(targetEntity="EventMembers", mappedBy="user") */
+    /* @OneToMany(targetEntity="EventMember", mappedBy="user") */
     private $events;
 
 
     //getters & setters
     public function getId(){
-        return $this->id();
+        return $this->id;
     }
 
-    public function setId($id){
-        return parent::setId($id, 'UUID');
+    public function setId($id, $type = "UUID"){
+        return parent::setId($id, $type);
     }
 
     public function getDisplayName(){
