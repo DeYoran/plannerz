@@ -1,1 +1,6 @@
-includes/config.php
+config/config.php
+sygnalnltest.php
+
+#temp
+layouts/*
+controller/*
