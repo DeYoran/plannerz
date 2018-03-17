@@ -1,6 +1,6 @@
 <?php
 
-class attending
+class Attending
 {
     const PENDING = 0;
     const COMING = 1;
@@ -8,7 +8,7 @@ class attending
     const NOT = 3;
 }
 
-class role
+class Role
 {
     const ORGANIZER = 30;
     const ADMIN = 25;
