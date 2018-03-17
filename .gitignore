@@ -1,5 +1,5 @@
-includes/config.php
-test.php
+config/config.php
+sygnalnltest.php
 
 #temp
 layouts/*

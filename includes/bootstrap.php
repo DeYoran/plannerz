@@ -16,5 +16,6 @@ require_once("includes/doctrine.php");
 require_once("includes/oauth2.php");
 require_once('controller/Controller.php');
 require_once('includes/Validator.php');
+require_once('config/constants.php');
 
 require_once('types/UUID.php');
