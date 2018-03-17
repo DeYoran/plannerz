@@ -14,24 +14,25 @@ class Event extends Model{
     /** @OneToMany(targetEntity="EventMember", mappedBy="event") */
    private $members;
 
-    public function getId(){
-        return $this->id;
-    }
 
-    public function setId($id, $type = 'UUID'){
-        return parent::setId($id, $type);
-    }
+   public function getUUID(){
+       return new UUID($this->id);
+   }
+
+   public function getId(){
+       return $this->id;
+   }
+
+   public function setId(UUID $id){
+       return $this->attemptToChangeId($uuid->getId());
+   }
 
     public function getOrganizerId(){
-        return $this->organizer;
+        return new UUID($this->organizer);
     }
 
-    public function setOrganizerId($id){
-        if(Validator::isUuid($id)){
-            $this->organizer = $id;
-            return $this;
-        }
-        $this->fault('type', ['type'=> 'uuid (string)']);
+    public function setOrganizerId(UUID $id){
+        $this->organizer = $id->getId();
     }
 
 }

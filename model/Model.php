@@ -18,18 +18,12 @@ Class Model{
         }
     }
 
-    protected function setId($id, $type){
+    private function attemptToChangeId($id){
         if(isset($this->id)){
             $this->fault('unchangable', ['value'=> 'id']);
             return $this;
         }
-        if($type == 'UUID'){
-            if(Validator::isUuid($id)){
-                $this->id = $id;
-                return $this;
-            }
-            $this->fault('type', ['type'=> 'uuid (string)']);
-        }
+        $this->id = $id;
     }
 
 }

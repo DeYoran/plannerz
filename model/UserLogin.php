@@ -14,21 +14,18 @@ class UserLogin extends Model{
     /** @Column(type="integer") */
     private $rights = 0;
 
-    public function __construct($user, $login){
-        $this->userid = $user->getId();
-        $this->loginid = $login->getId();
+    public function __construct(User $user, Login $login){
+        $this->userid = $user->getId()->getId();
+        $this->loginid = $login->getId()->getId();
     }
 
     public function getRights(){
         return $this->rights;
     }
 
-    public function setRights($rights){
-        if(Validator::isInt($rights)){
-            $this->rights = $rights;
-            return $this;
-        }
-        $this->fault('type', ['type'=> 'int']);
+    public function setRights(int $rights){
+        $this->rights = $rights;
+        return $this;
     }
 
     public function getUserid(){

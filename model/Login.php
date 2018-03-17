@@ -17,24 +17,28 @@ class Login extends Model{
     private $uLogins;
 
     //getters & setters
+    public function getUUID(){
+        return new UUID($this->id);
+    }
+
     public function getId(){
         return $this->id;
     }
 
-    public function setId($id, $type = "UUID"){
-        return parent::setId($id, $type);
+    public function setId(UUID $id){
+        return $this->attemptToChangeId($uuid->getId());
     }
 
     public function getEmailadress(){
         return $this->Email;
     }
 
-    public function setEmailadress($emailadress){
+    public function setEmailadress(string $emailadress){
         if(Validator::isEmail($emailadress)){
             $this->email = $emailadress;
             return $this;
         }
-        $this->fault('type', ['type'=> 'emailadress (string)']);
+        $this->fault('type', ['type'=> 'emailadress']);
     }
 
     public function checkPassword($password){

@@ -26,12 +26,16 @@ class User extends Model{
 
 
     //getters & setters
+    public function getUUID(){
+        return new UUID($this->id);
+    }
+
     public function getId(){
         return $this->id;
     }
 
-    public function setId($id, $type = "UUID"){
-        return parent::setId($id, $type);
+    public function setId(UUID $id){
+        return $this->attemptToChangeId($uuid->getId());
     }
 
     public function getDisplayName(){
